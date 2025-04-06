@@ -12,3 +12,11 @@ datasource db {
   provider = "sqlite"
   url      = "file:./db/dantas.db" // arquivo SQLite local
 }
+
+model Cliente {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  telefone  String
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
