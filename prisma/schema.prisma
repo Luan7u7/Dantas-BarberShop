@@ -21,6 +21,12 @@ model Cliente {
   agendamentos Agendamento[]
 }
 
+model Barber {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique
+}
+
 model Agendamento {
   id        Int      @id @default(autoincrement())
   dataHora  DateTime
