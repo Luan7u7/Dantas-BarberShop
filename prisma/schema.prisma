@@ -14,9 +14,17 @@ datasource db {
 }
 
 model Cliente {
+  id           Int           @id @default(autoincrement())
+  nome         String
+  email        String        @unique
+  criadoEm     DateTime      @default(now())
+  agendamentos Agendamento[]
+}
+
+model Agendamento {
   id        Int      @id @default(autoincrement())
-  nome      String
-  telefone  String
-  email     String   @unique
-  createdAt DateTime @default(now())
+  dataHora  DateTime
+  servico   String
+  cliente   Cliente  @relation(fields: [clienteId], references: [id])
+  clienteId Int
 }
